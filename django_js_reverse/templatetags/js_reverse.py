@@ -13,8 +13,8 @@ def js_reverse_inline(context):
     Outputs a string of javascript that can generate URLs via the use
     of the names given to those URLs.
     """
-    if 'request' in context:
-        default_urlresolver = urlresolvers.get_resolver(getattr(context['request'], 'urlconf', None))
+    if "request" in context:
+        default_urlresolver = urlresolvers.get_resolver(getattr(context["request"], "urlconf", None))
     else:
         default_urlresolver = urlresolvers.get_resolver(None)
     return generate_js(default_urlresolver)
