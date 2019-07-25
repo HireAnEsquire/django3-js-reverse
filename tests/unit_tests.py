@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-from __future__ import unicode_literals
+
 
 import os
 import sys
@@ -22,7 +22,7 @@ from django.utils.encoding import smart_str
 
 from selenium.webdriver.phantomjs.webdriver import WebDriver
 
-from utils import script_prefix
+from .utils import script_prefix
 
 
 # Raise errors on DeprecationWarnings

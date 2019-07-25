@@ -12,7 +12,7 @@ from .js_reverse_settings import (JS_EXCLUDE_NAMESPACES, JS_GLOBAL_OBJECT_NAME,
                                   JS_MINIFY, JS_VAR_NAME)
 
 if sys.version < '3':
-    text_type = unicode  # NOQA
+    text_type = str  # NOQA
 else:
     text_type = str
 
@@ -28,7 +28,7 @@ def prepare_url_list(urlresolver, namespace_path='', namespace=''):
     if namespace[:-1] in exclude_ns:
         return
 
-    for url_name in urlresolver.reverse_dict.keys():
+    for url_name in list(urlresolver.reverse_dict.keys()):
         if isinstance(url_name, (text_type, str)):
             url_patterns = []
             for url_pattern in urlresolver.reverse_dict.getlist(url_name):
@@ -38,7 +38,7 @@ def prepare_url_list(urlresolver, namespace_path='', namespace=''):
             yield [namespace + url_name, url_patterns]
 
     for inner_ns, (inner_ns_path, inner_urlresolver) in \
-            urlresolver.namespace_dict.items():
+            list(urlresolver.namespace_dict.items()):
         inner_ns_path = namespace_path + inner_ns_path
         inner_ns = namespace + inner_ns + ':'
 
